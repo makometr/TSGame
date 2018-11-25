@@ -13,12 +13,7 @@ server.set("views", `views`);
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));
 
-// const options = {
-// 	key: fs.readFileSync('privateKey.key'),
-// 	cert: fs.readFileSync('certificate.crt')
-// };
 
-// https.createServer(options, server).listen(port);
 
 server.listen(port, (err) => {
 	if (err)
