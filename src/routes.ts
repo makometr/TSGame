@@ -17,15 +17,26 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 // });
 
-router.get('*', (req, res, next) => {
+router.get('/start', (req, res, next) => {
 	console.log(req.path);
-	res.status(404);
 	res.render("menu", {
 		title : "Start Game!",
 	});
-	// res.end("<h1>Page not found</h1>");
-	// res.send("./index.html");
 	next();
 });
 
+router.get('/game', (req, res, next) => {
+	console.log(req.path);
+	res.render("game", {
+		title : "Fancy Digger",
+	});
+	next();
+});
+
+router.get('*', (req, res, next) => {
+	console.log(req.path);
+	res.status(404);
+	res.end("<h1>Page not found</h1>");
+	next();
+});
 export {router as routes}

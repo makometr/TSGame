@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        include header.pug
+        script(src="game.js")
+    body
+        div#mainWindow
+            div#buttonsUpper
+                div#help
+                    p Помощь
+                div#records
+                    p Рекорды
+                div#exit
+                    p Выход
+            div#game
+                canvas#gameCanvas(width="300" height="500")

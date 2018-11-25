@@ -5,7 +5,7 @@ html
         script(src="menu.js")
     body
         div#menu
-            form#playerInfo
+            form#playerInfo(method="dialog")
                 h1 Вход в игру
                 p Введите имя:
                 input#inputName(type="text" name="name" form="playerInfo" required)
