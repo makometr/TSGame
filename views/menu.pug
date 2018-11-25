@@ -2,6 +2,10 @@ doctype html
 html
     head
         include header.pug
-        //- script(src="javascripts/picturesHTML.js")
+        script(src="menu.js")
     body
-        h1 Heh!
+        div#menu
+            form#playerInfo
+                p Введите имя
+                input(type="text" name="name" form="playerInfo" required)
+                button#startGameButton(onClick="startGame()" form="playerInfo") Играть!
