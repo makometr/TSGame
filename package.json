@@ -1,0 +1,26 @@
+{
+  "name": "tsgame",
+  "version": "1.0.0",
+  "description": "Repo for a small game on TS/JS. Course-work on web-technologies 5-sem course.",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.10",
+    "pug": "^2.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makometr/TSGame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makometr/TSGame/issues"
+  },
+  "homepage": "https://github.com/makometr/TSGame#readme"
+}
