@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'PF Centro Sans Pro';
-    src: url('PFCentroSansPro-Bold.eot');
-    src: local('PFCentroSansPro-Bold'),
-        url('PFCentroSansPro-Bold.eot?#iefix') format('embedded-opentype'),
-        url('PFCentroSansPro-Bold.woff') format('woff'),
-        url('PFCentroSansPro-Bold.ttf') format('truetype');
-    font-weight: bold;
+    font-family: 'PF Centro Sans Pro UBlack';
+    src: url('PFCentroSansPro-UBlack.eot');
+    src: local('PFCentroSansPro-UBlack'),
+        url('PFCentroSansPro-UBlack.eot?#iefix') format('embedded-opentype'),
+        url('PFCentroSansPro-UBlack.woff') format('woff'),
+        url('PFCentroSansPro-UBlack.ttf') format('truetype');
+    font-weight: 900;
     font-style: normal;
 }
 
@@ -15,10 +15,53 @@
     font-style: normal;
 }
 
-h1 {
-    color: red;
+#menu {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
+    /* font-size: 35px; */
+    background-color: blue;
+    width: 300px;
+    border-radius: 10px 10px 10px 10px;
+    border-color: #FF5438;
 }
 
-#menu {
-    background-color: blue;
+#menu h1 {
+    margin: 0px auto 5px auto;
+    text-align: center;
+    font-size: 30px;
+}
+
+#menu p {
+    margin: 5px;
+    font-size: 20px;
+    
+}
+
+#menu input {
+    padding: 2px;
+    margin: 0px 5px;
+    display: inline-block;
+    /* font-size: 15pt; */
+    border: 1px solid #aaa;
+    border-radius: 2px;
+}
+
+#menu button {
+    display: inline-block;
+    margin: 5px 0px 10px 75px;
+    width: 150px;
+    background-color: #ee7854;
+    border: 1px solid #914b11;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #d59874;
+    color: rgb(255, 238, 0);
+    padding: 6px 20px;
+    text-align: center; 
+}
+
+
+#menu button:hover {
+    opacity:.85;
+    cursor: pointer;
 }

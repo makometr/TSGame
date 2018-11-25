@@ -6,6 +6,7 @@ html
     body
         div#menu
             form#playerInfo
-                p Введите имя
-                input(type="text" name="name" form="playerInfo" required)
+                h1 Вход в игру
+                p Введите имя:
+                input#inputName(type="text" name="name" form="playerInfo" required)
                 button#startGameButton(onClick="startGame()" form="playerInfo") Играть!
