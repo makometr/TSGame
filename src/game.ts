@@ -1,2 +1,7 @@
-// import {mapManager} from "./mapManager";
-// import {spriteManager} from "./spriteManager";
+
+
+window.onload = function(){
+    console.log("Page loaded!");
+    let mapManager = new MapManager();
+    let test = new SpriteManager();
+}

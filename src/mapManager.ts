@@ -2,7 +2,7 @@ enum TileType {
     Empty = 0, Dirt, Stone, Lava
 }
 
-export class mapManager {
+class MapManager {
     private map: TileType[][];
     mapSize : {
         x: number;
@@ -12,6 +12,7 @@ export class mapManager {
 
     constructor(){
         this.map = [];
+        this.mapSize = {x:20, y:30};
 
         for(var i: number = 0; i < this.mapSize.x; i++) {
             this.map[i] = [];

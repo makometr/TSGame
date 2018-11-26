@@ -6,8 +6,8 @@ mv src/routes.js .
 mv src/menu.js public
 
 mv src/game.js public
-mv src/mapManager.js public
-mv src/spriteManager.js public 
+mv src/MapManager.js public
+mv src/SpriteManager.js public 
 
 
 node app.js
