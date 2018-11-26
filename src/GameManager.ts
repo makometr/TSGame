@@ -12,7 +12,7 @@ class GameManager {
         this.isgameGoing = false;
 
         this.spriteManager = new SpriteManager();
-        this.soundManager = new SpriteManager();
+        this.soundManager = new SoundManager();
         this.mapManager = new MapManager();
 
         this.loadInitData();
