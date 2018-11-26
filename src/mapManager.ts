@@ -12,7 +12,7 @@ class MapManager {
 
     constructor(){
         this.map = [];
-        this.mapSize = {x:20, y:30};
+        this.mapSize = {x:0, y:0};
 
         for(var i: number = 0; i < this.mapSize.x; i++) {
             this.map[i] = [];
