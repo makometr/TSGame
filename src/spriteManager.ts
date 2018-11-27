@@ -22,9 +22,6 @@ class SpriteManager {
             });
 
         }
-        // while (this.picturesLoaded != this.picturesNumber){
-        //     console.log("sas");
-        // };
     }
 
     isLoaded():boolean{
