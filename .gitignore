@@ -63,3 +63,4 @@ typings/
 
 #due to using typescript in project
 *.js
+*.jpg

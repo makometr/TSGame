@@ -41,10 +41,10 @@ class GameManager {
         // draw screen on canvas with some level_number, button "start" and sprite on bckg before each level
         if (!this.spriteManager.isLoaded)
             return;
-        // let canvas = <HTMLCanvasElement> document.getElementById("gameCanvas");
-        // let context = canvas.getContext("2d");
         let ctx = htmlPage.getCanvas();
         ctx.drawImage(this.spriteManager.gethelloWindowBackgroundImage(), 0,0);
+        ctx.font = "bold 25px sans-serif";
+        ctx.fillText(`Level ${this.currentGameLevel}`, 145, 165);
         clearTimeout(timer);
     }
 
