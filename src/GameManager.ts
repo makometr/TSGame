@@ -55,9 +55,8 @@ class GameManager {
             }
             else {
                 console.log("Level data is succesfully loaded!");
-                let serverAns = JSON.parse(xhr.responseText);
+                let serverAns:LevelData = JSON.parse(xhr.responseText);
                 console.log(serverAns);
-                // todo interface for level data
             }
         };
     

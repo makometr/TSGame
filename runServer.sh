@@ -2,6 +2,7 @@
 tsc
 mv src/app.js .
 mv src/routes.js .
+mv src/LevelsStorageManager.js .
 
 mv src/menu.js public
 
