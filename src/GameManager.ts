@@ -1,3 +1,9 @@
+namespace htmleElem {
+    function getContext(){
+        return 
+    }
+}
+
 class GameManager {
     private mapManager: MapManager;
     private spriteManager: SpriteManager;
@@ -30,13 +36,22 @@ class GameManager {
         // load resources for current level
         // must be called before level began
         this.loadCurrentLevelData();
-        this.drawHelloLevelScreen();
+        let loadImgTimer = setTimeout(() => {
+            console.log("Try to draw hello window!");
+            this.drawHelloLevelScreen(loadImgTimer);
+        }, 50);
         // smth else - ?
     }
 
-    drawHelloLevelScreen(){
+    drawHelloLevelScreen(timer: NodeJS.Timeout){
         // draw screen on canvas with some level_number, button "start" and sprite on bckg before each level
-
+        if (!this.spriteManager.isLoaded)
+            return;
+        let canvas = <HTMLCanvasElement> document.getElementById("gameCanvas");
+        let context = canvas.getContext("2d");
+        if (context != null)
+            context.drawImage(this.spriteManager.gethelloWindowBackgroundImage(), 0,0);
+        clearTimeout(timer);
     }
 
     loadCurrentLevelData(){
