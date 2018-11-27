@@ -1,7 +1,3 @@
-enum TileType {
-    Empty = 0, Dirt, Stone, Lava
-}
-
 class MapManager {
     private map: TileType[][];
     mapSize : {
