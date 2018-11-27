@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from 'express';
 import * as https from "https";
 import * as fs from "fs";
 const port = 3000;
@@ -15,7 +15,7 @@ server.use(bodyParser.urlencoded({extended: true}));
 
 
 
-server.listen(port, (err) => {
+server.listen(port, (err:any) => {
 	if (err)
 		console.log("Error while starting server");
 	else

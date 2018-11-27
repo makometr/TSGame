@@ -4,6 +4,7 @@ export class LevelsStorageManager {
     levels: LevelData[];
 
 	constructor(){
+        this.fileName = "";
         this.levelsNumber = 3;
         this.levels = [];
         this.load();
@@ -26,7 +27,7 @@ export class LevelsStorageManager {
 		}
     }
     
-    getLevel(number: number): LevelData {
+    getLevel(number: number): LevelData | null {
         if (number > this.levelsNumber || number < 1){
             console.log("Get incorrect level number!");
             return null;

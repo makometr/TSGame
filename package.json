@@ -4,6 +4,7 @@
   "description": "Repo for a small game on TS/JS. Course-work on web-technologies 5-sem course.",
   "main": "app.js",
   "dependencies": {
+    "@types/express": "^4.16.0",
     "express": "^4.16.4"
   },
   "devDependencies": {

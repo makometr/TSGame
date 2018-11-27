@@ -40,7 +40,7 @@ router.get('/game', (req, res, next) => {
 router.get('/data/level', (req, res, next) => {
 	console.log('Requested current level data number: ', req.query.number);
 	let requestedLevelNumber = req.query.number;
-	let levelData:LevelData = levelsStorageManager.getLevel(requestedLevelNumber);
+	let levelData:LevelData | null = levelsStorageManager.getLevel(requestedLevelNumber);
 	console.log("Send levelData", levelData);
 	res.send(JSON.stringify(levelData));
 });
