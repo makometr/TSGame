@@ -41,6 +41,26 @@ class GameManager {
 
     loadCurrentLevelData(){
         // load data for current level
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", `/data/level?number=${this.currentGameLevel}`, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send();
+    
+        xhr.onreadystatechange = () => {
+            // console.log("Wait for respond from server to change book:", xhr.readyState);
+            if (xhr.readyState != 4) return;        
+            if (xhr.status != 200) {
+                alert( 'Error: ' + (xhr.status ? xhr.statusText : 'server is not responding') );
+                return;
+            }
+            else {
+                console.log("Level data is succesfully loaded!");
+                let serverAns = JSON.parse(xhr.responseText);
+                console.log(serverAns);
+                // todo interface for level data
+            }
+        };
+    
     }
 
     gameStart(){

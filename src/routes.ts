@@ -33,6 +33,17 @@ router.get('/game', (req, res, next) => {
 	next();
 });
 
+router.get('/data/level', (req, res, next) => {
+	console.log('Requested current level data number: ', req.query.number);
+	let requestedLevelNumber = req.query.number;
+	let levelData = {
+		number: 1,
+		data: "sas",
+	}
+	console.log("Send levelData", levelData);
+	res.send(JSON.stringify(levelData));
+});
+
 router.get('*', (req, res, next) => {
 	console.log(req.path);
 	res.status(404);
