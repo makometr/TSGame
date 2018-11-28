@@ -3,7 +3,7 @@ enum TileType {
 }
 
 enum BonusType {
-    Diamond, Iron, Gold
+    Diamond = 0, Iron, Gold
 }
 
 interface Properties2D {

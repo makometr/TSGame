@@ -21,7 +21,7 @@ class GameManager {
         this.spriteManager = new SpriteManager("img",
                         ["bkg.png"],
                         ["empty.png", "dirt.png", "stone.png", "brick.png"],
-                        ["diamond.png"]);
+                        ["diamond.png", "ruby.png", "sapphire.png"]);
         this.soundManager = new SoundManager();
         this.mapManager = new MapManager(this.spriteManager);
         this.eventManager = new EventManager();
