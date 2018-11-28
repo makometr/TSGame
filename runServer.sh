@@ -13,6 +13,8 @@ mv src/GameManager.js public
 mv src/SoundManager.js public
 mv src/EventManager.js public
 mv src/agreements.js public
+mv src/PhysicsManager.js public
+
 
 
 

@@ -35,17 +35,18 @@ class Hero {
     }
 
     move(direction:DirectionMove){
+        console.log(this.geometry);
         if (direction == DirectionMove.Left)
             this.geometry.x -= 5;
         if (direction == DirectionMove.Right)
             this.geometry.x += 5;
-
     }
 }
 
 class MapManager {
     private spriteWidth:number; // in pixels
     private spriteManager:SpriteManager | null; // may be do public?
+    private physicsManager:PhysicsManager;
     
     playerModel: Hero;
     private map: TileType[][];
@@ -55,14 +56,9 @@ class MapManager {
         y: number;
     };
 
-    private mapSizeInPixels : {
-        x: number;
-        y: number;
-    }
-
-
     constructor(spr_man:SpriteManager){
         this.spriteManager = spr_man;
+        this.physicsManager = new PhysicsManager();
         this.spriteWidth = 25;
 
         this.map = [];
@@ -76,7 +72,6 @@ class MapManager {
                 this.map[i][j] = TileType.Empty;
             }
         }
-        this.mapSizeInPixels = {x:0, y:0};
     }
 
     initByLevelData(data:LevelData){
@@ -90,9 +85,9 @@ class MapManager {
             let newBonus = new BonusEntity(bonus.type, x_coord_bonus, y_coord_bonus);
             this.bonuses.push(newBonus);
         });
-        this.mapSizeInPixels = {x: data.mapSize.x*this.spriteWidth, y: data.mapSize.y*this.spriteWidth };
 
         this.playerModel = new Hero({x:data.startPosition.x, y:data.startPosition.y, sizeX:20, sizeY:25});
+        this.physicsManager.initByLevelData(data, this.playerModel);
     }
 
     drawCurrentMapState(){
@@ -113,11 +108,8 @@ class MapManager {
         let curY:number = 0;
         let step:number = this.spriteWidth;
         for (let i:number = 0; i < this.mapSize.y; i++, curY += step){
-            for (let j:number = 0, curX = 0; j < this.mapSize.x; j++, curX += step){
-                // console.log("coord x y type", curX, curY, this.map[i][j]);
-                // this.drawTile(ctx, this.map[i][j], curX, curY);
+            for (let j:number = 0, curX = 0; j < this.mapSize.x; j++, curX += step)
                 this.drawImg(this.spriteManager.getTileSpriteType(this.map[i][j]), curX, curY);
-            }
         }
     }
 
@@ -138,24 +130,8 @@ class MapManager {
     }
 
     moveHero(direction:DirectionMove){
-        this.playerModel.move(direction);
-        this.checkBorders();
-
-    }   
-    
-    checkBorders() {
-        if (this.playerModel.geometry.x <= 0)
-            this.playerModel.geometry.x = 0;
-
-        if (this.playerModel.geometry.x + this.playerModel.geometry.sizeX >= this.mapSizeInPixels.x)
-            this.playerModel.geometry.x = this.mapSizeInPixels.x - this.playerModel.geometry.sizeX;
-
-        if (this.playerModel.geometry.y <= 0)
-            this.playerModel.geometry.y = 0;
-
-        if (this.playerModel.geometry.y + this.playerModel.geometry.sizeY >= this.mapSizeInPixels.y)
-            this.playerModel.geometry.y = this.mapSizeInPixels.y - this.playerModel.geometry.sizeY;
-
+        this.physicsManager.moveHero(direction);
     }
+
 }
 
