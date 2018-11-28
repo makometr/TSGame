@@ -15,10 +15,9 @@ class SpriteManager {
         for (let i:number = 0; i < this.picturesNumber; i++){
             this.images[i] = new Image();
             this.images[i].src = `${folderName}/${this.imageNames[i+1]}`;
-            console.log("sas", this.images[i].src);
             this.images[i].onload = (() => {
                 this.picturesLoaded++;
-                console.log("End", this.images[i], this.picturesLoaded);
+                console.log("End loading img", this.images[i], this.picturesLoaded);
             });
 
         }

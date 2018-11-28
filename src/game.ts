@@ -11,10 +11,11 @@ class htmlElems {
     }
 }
 var htmlPage:any;
+var gameManager:GameManager;
 
 window.onload = function(){
     console.log("Page loaded!");
-    let gameManager = new GameManager();
+    gameManager = new GameManager();
     htmlPage = new htmlElems();
 
 }

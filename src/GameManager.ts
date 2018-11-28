@@ -2,18 +2,22 @@ class GameManager {
     private mapManager: MapManager;
     private spriteManager: SpriteManager;
     private soundManager: SoundManager;
+    private eventManager: EventManager;
 
     private currentGameLevel: number;
-    private isgameGoing: boolean;
+    private isGameGoing: boolean;
+    private currentGameLevelData: LevelData | null;
 
     constructor(){
         console.log("game manager init!");
         this.currentGameLevel = 1;
-        this.isgameGoing = false;
+        this.isGameGoing = false;
+        this.currentGameLevelData = null;
 
         this.spriteManager = new SpriteManager();
         this.soundManager = new SoundManager();
         this.mapManager = new MapManager();
+        this.eventManager = new EventManager();
 
         this.loadInitData();
         this.startLevelRender();
@@ -30,11 +34,23 @@ class GameManager {
         // load resources for current level
         // must be called before level began
         this.loadCurrentLevelData();
+        let loadLevelTimer = setTimeout(() => {
+            console.log("Try to load level data in mapManager");
+            this.loadLevelDataInMapManager(loadLevelTimer);
+        }, 50);
+
         let loadImgTimer = setTimeout(() => {
             console.log("Try to draw hello window!");
             this.drawHelloLevelScreen(loadImgTimer);
         }, 50);
         // smth else - ?
+    }
+
+    loadLevelDataInMapManager(timer: NodeJS.Timeout){
+        if (!this.currentGameLevelData)
+            return;
+        this.mapManager.initByLevelData(this.currentGameLevelData);
+        clearTimeout(timer);
     }
 
     drawHelloLevelScreen(timer: NodeJS.Timeout){
@@ -56,7 +72,6 @@ class GameManager {
         xhr.send();
     
         xhr.onreadystatechange = () => {
-            // console.log("Wait for respond from server to change book:", xhr.readyState);
             if (xhr.readyState != 4) return;        
             if (xhr.status != 200) {
                 alert( 'Error: ' + (xhr.status ? xhr.statusText : 'server is not responding') );
@@ -64,15 +79,26 @@ class GameManager {
             }
             else {
                 console.log("Level data is succesfully loaded!");
-                let serverAns:LevelData = JSON.parse(xhr.responseText);
-                console.log(serverAns);
+                this.currentGameLevelData = JSON.parse(xhr.responseText);
+                console.log(this.currentGameLevelData);
             }
         };
     
     }
 
-    gameStart(){
-        this.isgameGoing = true;
-        // todo
+    startLevel(){
+        console.log("Level started!");
+        this.isGameGoing = true;
+        this.eventManager.startGameTimer();
+
+    }
+
+    updateGame(){
+        this.mapManager.drawCurrentMapState();
+        // ...
+    }
+
+    stopLevel(){
+        this.eventManager.stopGameTimer();
     }
 }

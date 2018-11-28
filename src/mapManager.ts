@@ -1,6 +1,6 @@
 class MapManager {
     private map: TileType[][];
-    mapSize : {
+    private mapSize : {
         x: number;
         y: number;
     };
@@ -16,8 +16,17 @@ class MapManager {
                 this.map[i][j] = TileType.Empty;
             }
         }
-        console.log(this.map);
     }
 
+    initByLevelData(data:LevelData){
+        console.log("Map manager inited by data");
+        this.mapSize = data.mapSize;
+        this.map = data.fullMap;
+    }
+
+    drawCurrentMapState(){
+        console.log("Updatae mao!");
+
+    }
 }
 

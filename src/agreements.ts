@@ -7,7 +7,7 @@ enum StaticMapObject {
 }
 
 interface LevelData {
-    // fullMap: TileType[][];
+    fullMap: TileType[][];
     // Objects: {
     //     type: StaticMapObject;
     //     coordinate: {
