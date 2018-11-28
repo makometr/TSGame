@@ -15,7 +15,7 @@ var gameManager:GameManager;
 
 window.onload = function(){
     console.log("Page loaded!");
-    gameManager = new GameManager();
     htmlPage = new htmlElems();
+    gameManager = new GameManager();
 
 }

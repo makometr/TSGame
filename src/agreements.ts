@@ -3,7 +3,11 @@ enum TileType {
 }
 
 enum BonusType {
-    Diamond = 0, Iron, Gold
+    Diamond = 0, Ruby, Sapphire
+}
+
+enum DirectionMove {
+    Left = 0, Right
 }
 
 interface Properties2D {
@@ -26,14 +30,15 @@ interface LevelData {
         x: number;
         y: number;
     };
-    // startPosition : {
-    //     x: number;
-    //     y: number;
-    // }; 
-    // finishPosition : {
-    //     x: number;
-    //     y: number;
-    // };
+    startPosition : {
+        x: number;
+        y: number;
+    }; 
+    finishPosition : {
+        x: number;
+        y: number;
+    };
     
     // todo doors and levers
 }
+

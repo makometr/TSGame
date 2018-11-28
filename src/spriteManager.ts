@@ -60,6 +60,10 @@ class SpriteManager {
         return this.images[0];
     }
 
+    getHeroSprite(){
+        return this.images[1];
+    }
+
     getTileSpriteType(type:TileType){
         switch (type){
             case TileType.Empty: return this.tileSprites[0];
@@ -72,8 +76,8 @@ class SpriteManager {
     getBonusSpriteType(type:BonusType){
         switch (type){
             case BonusType.Diamond: return this.bonusSprites[0];
-            case BonusType.Iron: return this.bonusSprites[1];
-            case BonusType.Gold: return this.bonusSprites[2];
+            case BonusType.Ruby: return this.bonusSprites[1];
+            case BonusType.Sapphire: return this.bonusSprites[2];
         }
     }
 }

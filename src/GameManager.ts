@@ -19,7 +19,7 @@ class GameManager {
         this.currentGameLevelData = null;
 
         this.spriteManager = new SpriteManager("img",
-                        ["bkg.png"],
+                        ["bkg.png", "hero.png"],
                         ["empty.png", "dirt.png", "stone.png", "brick.png"],
                         ["diamond.png", "ruby.png", "sapphire.png"]);
         this.soundManager = new SoundManager();
@@ -102,10 +102,15 @@ class GameManager {
 
     updateGame(){
         this.mapManager.drawCurrentMapState();
+        // this.mapManager.drawHero();
         // ...
     }
 
     stopLevel(){
         this.eventManager.stopGameTimer();
+    }
+
+    moveHero(direction:DirectionMove){
+        this.mapManager.moveHero(direction);
     }
 }

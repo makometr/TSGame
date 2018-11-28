@@ -19,17 +19,22 @@ class EventManager {
                     case "Escape":
                         console.log("Esc Pressed");
                         gameManager.stopLevel();
-                // case "ArrowLeft":
+                        break;
+                    case "ArrowLeft":
+                        gameManager.moveHero(DirectionMove.Left);
+                        break;
+                    case "ArrowRight":
+                        gameManager.moveHero(DirectionMove.Right);
+                        break;
+                    case "ArrowDown":
+                    case "ArrowUp":    
+                        break;
                 //     ActiveFigure.moveLeft();
-                //     break;
-                // case "ArrowRight":
                 //     ActiveFigure.moveRight();
                 //     break;
-                // case "ArrowDown":
                 //     doStep();
                 //     resetTimer();
                 //     break;
-                // case "ArrowUp":
                 //     ActiveFigure.rotate();
                 //     break;
             }
