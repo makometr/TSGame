@@ -1,3 +1,7 @@
+// class config {
+
+// }
+
 class GameManager {
     private mapManager: MapManager;
     private spriteManager: SpriteManager;
@@ -14,7 +18,10 @@ class GameManager {
         this.isGameGoing = false;
         this.currentGameLevelData = null;
 
-        this.spriteManager = new SpriteManager();
+        this.spriteManager = new SpriteManager("img",
+                        ["bkg.png"],
+                        ["empty.png", "dirt.png", "stone.png", "brick.png"],
+                        ["diamond.png"]);
         this.soundManager = new SoundManager();
         this.mapManager = new MapManager(this.spriteManager);
         this.eventManager = new EventManager();

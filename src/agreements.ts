@@ -2,14 +2,14 @@ enum TileType {
     Empty = 0, Dirt, Stone, Brick
 }
 
-enum StaticMapObject {
+enum Bonus {
     Diamond, Iron, Gold
 }
 
 interface LevelData {
     fullMap: TileType[][];
     // Objects: {
-    //     type: StaticMapObject;
+    //     type: Bonus;
     //     coordinate: {
     //         x: number;
     //         y: number;

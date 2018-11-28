@@ -1,30 +1,55 @@
 class SpriteManager {
     private images : HTMLImageElement[];
+    private tileSprites : HTMLImageElement[];
+    private bonusSprites : HTMLImageElement[];
+
     private imageNames: string[];
-    private picturesLoaded: number;
-    private picturesNumber: number;
+    private tileNames: string[];
+    private bonusNames: string[];
+    private spritesLoaded: number;
+    private spritesNumber: number;
 
-    constructor() {
+    constructor(folder:string, imageNams: string[], tileNums:string[], bonusNums:string[]) {
         console.log("Sprite manager init!");
-        this.imageNames = ["img", "empty.png", "dirt.png", "stone.png", "brick.png", "bkg.png"];
-        this.picturesLoaded = 0;
-        let folderName = this.imageNames[0];
-        this.picturesNumber = this.imageNames.length-1;
+        let folderName = folder;
+        this.imageNames = imageNams;
+        this.tileNames = tileNums;
+        this.bonusNames = bonusNums;
+
+        this.spritesLoaded = 0;
+        this.spritesNumber = this.imageNames.length + this.tileNames.length + this.bonusNames.length;
         this.images = [];
+        this.tileSprites = [];
+        this.bonusSprites = [];
 
-        for (let i:number = 0; i < this.picturesNumber; i++){
+        for (let i:number = 0; i < this.imageNames.length; i++){
             this.images[i] = new Image();
-            this.images[i].src = `${folderName}/${this.imageNames[i+1]}`;
+            this.images[i].src = `${folderName}/${this.imageNames[i]}`;
             this.images[i].onload = (() => {
-                this.picturesLoaded++;
-                console.log("End loading img", this.images[i], this.picturesLoaded);
+                this.spritesLoaded++;
+                console.log("End loading img", this.images[i], this.spritesLoaded);
             });
-
-        }
+        };
+        for (let i:number = 0; i < this.tileNames.length; i++){
+            this.tileSprites[i] = new Image();
+            this.tileSprites[i].src = `${folderName}/${this.tileNames[i]}`;
+            this.tileSprites[i].onload = (() => {
+                this.spritesLoaded++;
+                console.log("End loading img", this.tileSprites[i], this.spritesLoaded);
+            });
+        };
+        for (let i:number = 0; i < this.spritesNumber; i++){
+            this.bonusSprites[i] = new Image();
+            this.bonusSprites[i].src = `${folderName}/${this.bonusNames[i]}`;
+            this.bonusSprites[i].onload = (() => {
+                this.spritesLoaded++;
+                console.log("End loading img", this.bonusSprites[i], this.spritesLoaded);
+            });
+        };
     }
 
     isLoaded():boolean{
-        return this.picturesLoaded == this.picturesNumber ? true : false;
+        return this.spritesLoaded == this.spritesNumber ? true : false;
     }
 
     loadData(){
@@ -32,15 +57,15 @@ class SpriteManager {
     }
 
     getHelloWindowBackgroundImage(){
-        return this.images[4];
+        return this.images[0];
     }
 
     getTileSpriteType(type:TileType){
         switch (type){
-            case TileType.Empty: return this.images[0];
-            case TileType.Dirt:  return this.images[1];
-            case TileType.Stone:  return this.images[2];
-            case TileType.Brick:  return this.images[3];
+            case TileType.Empty: return this.tileSprites[0];
+            case TileType.Dirt:  return this.tileSprites[1];
+            case TileType.Stone:  return this.tileSprites[2];
+            case TileType.Brick:  return this.tileSprites[3];
         }
     }
 }
