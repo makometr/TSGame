@@ -16,7 +16,7 @@ class GameManager {
 
         this.spriteManager = new SpriteManager();
         this.soundManager = new SoundManager();
-        this.mapManager = new MapManager();
+        this.mapManager = new MapManager(this.spriteManager);
         this.eventManager = new EventManager();
 
         this.loadInitData();
@@ -58,7 +58,7 @@ class GameManager {
         if (!this.spriteManager.isLoaded)
             return;
         let ctx = htmlPage.getCanvas();
-        ctx.drawImage(this.spriteManager.gethelloWindowBackgroundImage(), 0,0);
+        ctx.drawImage(this.spriteManager.getHelloWindowBackgroundImage(), 0,0);
         ctx.font = "bold 25px sans-serif";
         ctx.fillText(`Level ${this.currentGameLevel}`, 145, 165);
         clearTimeout(timer);

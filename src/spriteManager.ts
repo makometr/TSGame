@@ -6,11 +6,11 @@ class SpriteManager {
 
     constructor() {
         console.log("Sprite manager init!");
+        this.imageNames = ["img", "empty.png", "dirt.png", "stone.png", "brick.png", "bkg.png"];
         this.picturesLoaded = 0;
-        this.picturesNumber = 1;
-        this.images = [];
-        this.imageNames = ["img", "bkg.png"];
         let folderName = this.imageNames[0];
+        this.picturesNumber = this.imageNames.length-1;
+        this.images = [];
 
         for (let i:number = 0; i < this.picturesNumber; i++){
             this.images[i] = new Image();
@@ -31,7 +31,16 @@ class SpriteManager {
         console.log("data Sprite loaded!");
     }
 
-    gethelloWindowBackgroundImage(){
-        return this.images[0];
+    getHelloWindowBackgroundImage(){
+        return this.images[4];
+    }
+
+    getTileSpriteType(type:TileType){
+        switch (type){
+            case TileType.Empty: return this.images[0];
+            case TileType.Dirt:  return this.images[1];
+            case TileType.Stone:  return this.images[2];
+            case TileType.Brick:  return this.images[3];
+        }
     }
 }

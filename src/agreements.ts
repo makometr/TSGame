@@ -1,5 +1,5 @@
 enum TileType {
-    Empty = 0, Dirt, Stone, Lava
+    Empty = 0, Dirt, Stone, Brick
 }
 
 enum StaticMapObject {
