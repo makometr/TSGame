@@ -2,19 +2,26 @@ enum TileType {
     Empty = 0, Dirt, Stone, Brick
 }
 
-enum Bonus {
+enum BonusType {
     Diamond, Iron, Gold
+}
+
+interface Properties2D {
+    x:number;
+    y:number;
+    sizeX: number;
+    sizeY: number;
 }
 
 interface LevelData {
     fullMap: TileType[][];
-    // Objects: {
-    //     type: Bonus;
-    //     coordinate: {
-    //         x: number;
-    //         y: number;
-    //     }
-    // }[];
+    Bonuses: {
+        type: BonusType;
+        coord: {
+            x: number;
+            y: number;
+        }
+    }[];
     mapSize : {
         x: number;
         y: number;

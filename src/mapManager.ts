@@ -1,8 +1,34 @@
+abstract class Entity  {
+    protected geometry: Properties2D;
+
+    constructor(geom:Properties2D){
+        this.geometry = geom;
+    }
+
+    checkOverlap(geomChecked:Properties2D): boolean {
+        if (geomChecked.x+geomChecked.sizeX >= this.geometry.x)
+            if (geomChecked.y+geomChecked.sizeY >= this.geometry.y)
+                return true;
+        return false;
+        // TODO TESTS доделать beta 0.1
+    }
+}
+
+class BonusEntity extends Entity {
+    private type:BonusType;
+
+    constructor(entType:BonusType, x_coord:number, y_coord:number) {
+        super({x: x_coord, y: y_coord, sizeX: 10, sizeY: 15});
+        this.type = entType;
+    }
+}
+
 class MapManager {
     private spriteWidth:number; // in pixels
     private spriteManager:SpriteManager | null;
     
     private map: TileType[][];
+    // private bonuses: BonusEntity[];
     private mapSize : {
         x: number;
         y: number;

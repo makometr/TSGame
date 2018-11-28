@@ -67,5 +67,13 @@ class SpriteManager {
             case TileType.Stone:  return this.tileSprites[2];
             case TileType.Brick:  return this.tileSprites[3];
         }
+    };
+
+    getBonusSpriteType(type:BonusType){
+        switch (type){
+            case BonusType.Diamond: return this.bonusSprites[0];
+            case BonusType.Iron: return this.bonusSprites[1];
+            case BonusType.Gold: return this.bonusSprites[2];
+        }
     }
 }
