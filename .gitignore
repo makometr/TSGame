@@ -64,3 +64,4 @@ typings/
 #due to using typescript in project
 *.js
 *.jpg
+hero-temp.png

@@ -24,7 +24,7 @@ class GameManager {
                         ["diamond.png", "ruby.png", "sapphire.png"]);
         this.soundManager = new SoundManager();
         this.mapManager = new MapManager(this.spriteManager);
-        this.eventManager = new EventManager();
+        this.eventManager = new EventManager(this.mapManager);
 
         this.loadInitData();
         this.startLevelRender();

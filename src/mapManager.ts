@@ -35,7 +35,6 @@ class Hero {
     }
 
     move(direction:DirectionMove){
-        console.log(this.geometry);
         if (direction == DirectionMove.Left)
             this.geometry.x -= 5;
         if (direction == DirectionMove.Right)
@@ -46,7 +45,7 @@ class Hero {
 class MapManager {
     private spriteWidth:number; // in pixels
     private spriteManager:SpriteManager | null; // may be do public?
-    private physicsManager:PhysicsManager;
+    public physicsManager:PhysicsManager;
     
     playerModel: Hero;
     private map: TileType[][];
