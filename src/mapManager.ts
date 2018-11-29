@@ -133,8 +133,8 @@ class MapManager {
         this.drawImg(this.spriteManager.getHeroSprite(), this.playerModel.geometry.x, this.playerModel.geometry.y);
     }
 
-    moveHero(direction:DirectionMove){
-        this.physicsManager.moveHero(direction);
+    moveHero(direction:DirectionMove, isDown:boolean){
+        this.physicsManager.moveHero(direction, isDown);
     }
 
 }

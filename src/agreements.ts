@@ -7,7 +7,7 @@ enum BonusType {
 }
 
 enum DirectionMove {
-    Left = 0, Right
+    Left = 0, Right, Jump
 }
 
 interface Properties2D {

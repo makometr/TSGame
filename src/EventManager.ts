@@ -17,7 +17,7 @@ class EventManager {
 
         document.addEventListener('keydown', (event:any) => {
             let keyName = event.key;
-            console.log('Событие keydown: ' + keyName);
+            // console.log('Событие keydown: ' + keyName);
         switch(this.currentState){
             case State.Menu:
                 switch (keyName){
@@ -33,7 +33,7 @@ class EventManager {
                 switch (keyName){
                     case " ":
                         console.log("Space pressed");
-                        this.mapManager.physicsManager.jumpHero();
+                        this.mapManager.physicsManager.moveHero(DirectionMove.Jump, true);
                         break;
                     case "Escape":
                         console.log("Game paused");
@@ -41,10 +41,10 @@ class EventManager {
                         this.currentState = State.Pause;
                         break;
                     case "ArrowLeft":
-                        gameManager.moveHero(DirectionMove.Left);
+                        this.mapManager.physicsManager.moveHero(DirectionMove.Left, true);
                         break;
                     case "ArrowRight":
-                        gameManager.moveHero(DirectionMove.Right);
+                        this.mapManager.physicsManager.moveHero(DirectionMove.Right, true);
                         break;   
                 }
                 break;
@@ -60,6 +60,27 @@ class EventManager {
                 break;
         }
         // event.preventDefault();
+        });
+
+        document.addEventListener('keyup', (event:any) => {
+            let keyName = event.key;
+            // console.log('Событие keyup: ' + keyName);
+            switch(this.currentState){
+                case State.Game:
+                    switch (keyName){
+                        case " ":
+                            this.mapManager.physicsManager.moveHero(DirectionMove.Jump, false);
+                            break;
+                        case "ArrowLeft":
+                            this.mapManager.physicsManager.moveHero(DirectionMove.Left, false);
+                            break;
+                        case "ArrowRight":
+                            this.mapManager.physicsManager.moveHero(DirectionMove.Right, false);
+                            break;   
+                    }
+                    break;
+                break;
+            }
         });
     }
 

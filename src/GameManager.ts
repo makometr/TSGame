@@ -110,7 +110,7 @@ class GameManager {
         this.eventManager.stopGameTimer();
     }
 
-    moveHero(direction:DirectionMove){
-        this.mapManager.moveHero(direction);
-    }
+    // moveHero(direction:DirectionMove){
+    //     this.mapManager.moveHero(direction);
+    // }
 }
