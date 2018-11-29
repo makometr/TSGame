@@ -11,7 +11,7 @@ class EventManager {
     constructor(map_man:MapManager){
         console.log("event manager init!");
         this.mapManager = map_man;
-        this.updateFrequency = 30;
+        this.updateFrequency = 50;
         this.gameTimer = null;
         this.currentState = State.Menu;
 
@@ -33,7 +33,7 @@ class EventManager {
                 switch (keyName){
                     case " ":
                         console.log("Space pressed");
-                        // this.mapManager.physicsManager.jumpHero();
+                        this.mapManager.physicsManager.jumpHero();
                         break;
                     case "Escape":
                         console.log("Game paused");
@@ -59,7 +59,7 @@ class EventManager {
                 }
                 break;
         }
-            
+        // event.preventDefault();
         });
     }
 

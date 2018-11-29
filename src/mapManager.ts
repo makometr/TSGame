@@ -6,11 +6,15 @@ abstract class Entity  {
     }
 
     checkOverlap(geomChecked:Properties2D): boolean {
-        if (geomChecked.x+geomChecked.sizeX >= this.geometry.x)
-            if (geomChecked.y+geomChecked.sizeY >= this.geometry.y)
-                return true;
-        return false;
+        // if (geomChecked.x+geomChecked.sizeX >= this.geometry.x)
+        //     if (geomChecked.y+geomChecked.sizeY >= this.geometry.y)
+        //         return true;
+        // return false;
         // TODO TESTS доделать beta 0.1
+        return !(((this.geometry.x + this.geometry.sizeX - 1) < geomChecked.x) ||
+                ((geomChecked.x + geomChecked.sizeX - 1) < this.geometry.x) ||
+                ((this.geometry.y + this.geometry.sizeY - 1) < geomChecked.sizeY) ||
+                ((geomChecked.y + geomChecked.sizeY - 1) < this.geometry.y))
     }
 }
 
@@ -34,12 +38,12 @@ class Hero {
         this.speedY = 0;
     }
 
-    move(direction:DirectionMove){
-        if (direction == DirectionMove.Left)
-            this.geometry.x -= 5;
-        if (direction == DirectionMove.Right)
-            this.geometry.x += 5;
-    }
+    // move(direction:DirectionMove){
+        // if (direction == DirectionMove.Left)
+        //     this.geometry.x -= 5;
+        // if (direction == DirectionMove.Right)
+        //     this.geometry.x += 5;
+    // }
 }
 
 class MapManager {
@@ -85,7 +89,7 @@ class MapManager {
             this.bonuses.push(newBonus);
         });
 
-        this.playerModel = new Hero({x:data.startPosition.x, y:data.startPosition.y, sizeX:20, sizeY:25});
+        this.playerModel = new Hero({x:data.startPosition.x*this.spriteWidth, y:data.startPosition.y*this.spriteWidth, sizeX:20, sizeY:25});
         this.physicsManager.initByLevelData(data, this.playerModel);
     }
 
@@ -125,6 +129,7 @@ class MapManager {
 
     drawHero(){
         if (!this.spriteManager) return;
+        this.physicsManager.updateHero();
         this.drawImg(this.spriteManager.getHeroSprite(), this.playerModel.geometry.x, this.playerModel.geometry.y);
     }
 
